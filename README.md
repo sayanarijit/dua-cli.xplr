@@ -1,19 +1,49 @@
-xplr plugin template
-====================
-
-Use this template to
-[create your own xplr plugin](https://arijitbasu.in/xplr/en/writing-plugins.html).
+[![xplr-dua.gif](https://s4.gifyu.com/images/xplr-dua.gif)](https://gifyu.com/image/rGze)
 
 
-How to use
-----------
+Requirements
+------------
 
-Visit
-[Creating a repository from a template](https://docs.github.com/en/articles/creating-a-repository-from-a-template)
-and follow the instructions.
+- [dua-cli](https://github.com/Byron/dua-cli)
 
 
-Examples
+Installation
+------------
+
+### Install manually
+
+- Add the following line in `~/.config/xplr/init.lua`
+
+  ```lua
+  package.path = os.getenv("HOME") .. '/.config/xplr/plugins/?/src/init.lua'
+  ```
+
+- Clone the plugin
+
+  ```bash
+  mkdir -p ~/.config/xplr/plugins
+
+  git clone https://github.com/sayanarijit/dua-cli.xplr ~/.config/xplr/plugins/dua-cli
+  ```
+
+- Require the module in `~/.config/xplr/init.lua`
+
+  ```lua
+  require("dua-cli").setup()
+  
+  -- Or
+  
+  require("dua-cli").setup{
+    mode = "action",
+    key = "D",
+  }
+
+  -- Type `:D` to spawn dua-cli in $PWD
+  ```
+
+
+Features
 --------
 
-Visit [Awesome Plugins](https://arijitbasu.in/xplr/en/awesome-plugins.html).
+- The paths selected for deletion, but not deleted, will be sent to the xplr
+  selection list.
