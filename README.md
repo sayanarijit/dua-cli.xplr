@@ -1,21 +1,22 @@
 [![xplr-dua.gif](https://s4.gifyu.com/images/xplr-dua.gif)](https://gifyu.com/image/rGze)
 
-
-Requirements
-------------
+## Requirements
 
 - [dua-cli](https://github.com/Byron/dua-cli)
 
-
-Installation
-------------
+## Installation
 
 ### Install manually
 
 - Add the following line in `~/.config/xplr/init.lua`
 
   ```lua
-  package.path = os.getenv("HOME") .. '/.config/xplr/plugins/?/src/init.lua'
+  local home = os.getenv("HOME")
+  package.path = home
+  .. "/.config/xplr/plugins/?/init.lua;"
+  .. home
+  .. "/.config/xplr/plugins/?.lua;"
+  .. package.path
   ```
 
 - Clone the plugin
@@ -30,9 +31,9 @@ Installation
 
   ```lua
   require("dua-cli").setup()
-  
+
   -- Or
-  
+
   require("dua-cli").setup{
     mode = "action",
     key = "D",
@@ -41,9 +42,7 @@ Installation
   -- Type `:D` to spawn dua-cli in $PWD
   ```
 
-
-Features
---------
+## Features
 
 - The paths selected for deletion, but not deleted, will be sent to the xplr
   selection list.
